@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/movie.css">
+</head>
+<body>
+    
+    <div class="wrap">
+        <%- include('./partials/header.ejs') %>
+
+        <main class="main">
+            <section class="movie">
+                    <h2 class="movie__title"><%= movie.title %></h2>
+                    
+                    <div class="movie__content">
+                        <div class="movie__poster">
+                            <img src="../<%= movie.poster_url %>" alt="<%= movie.title %> poster">
+                        </div>
+
+                        <div class="movie__info">
+                            <div class="movie__desc">
+                                <h3>Сюжет</h3>
+                                <p><%= movie.storyline %></p>
+                            </div>
+
+                            <dl class="movie__terms">
+                                <div class="movie__term-group">
+                                    <dt>Рейтинг</dt>
+                                    <dd><%= movie.rating %></dd>
+                                </div>
+                                <div class="movie__term-group">
+                                    <dt>Год выпуска</dt>
+                                    <dd><%= movie.release_year %></dd>
+                                </div>
+                                <div class="movie__term-group">
+                                    <dt>Страна</dt>
+                                    <dd><%= movie.country %></dd>
+                                </div>
+                                <div class="movie__term-group">
+                                    <dt>Длительность</dt>
+                                    <dd><%= movie.duration %> минут</dd>
+                                </div>
+                            </dl>
+
+                            <ul class="movie__genres">
+                                <% movie.genres.forEach(value => { %>
+                                    <li class="movie__genres-item">
+                                        <a href="/movies/<%= value %>" class="movie__genres-link"><%= value %></a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="/" class="previous-page"><?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M10.1,23a1,1,0,0,0,0-1.41L5.5,17H29.05a1,1,0,0,0,0-2H5.53l4.57-4.57A1,1,0,0,0,8.68,9L2.32,15.37a.9.9,0,0,0,0,1.27L8.68,23A1,1,0,0,0,10.1,23Z"/></g></svg></a>
+            </section>
+
+            <%- include('./partials/footer.ejs') %>
+        </main>
+    </div>
+
+    <script src="../src/searchFunction.js"></script>
+    <script>
+        searchFunction('../')
+    </script>
+</body>
+</html>

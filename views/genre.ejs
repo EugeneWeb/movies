@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    
+    <div class="wrap">
+        <%- include('./partials/header.ejs') %>
+
+        <main class="main">
+            <section class="movies">
+                <h1 class="movies__title title"><%= genre %></h1>
+                
+                <ul class="movies__list">
+                    <% movies.forEach(({_id: id, title: movieTitle, poster_url, storyline, genres }) => { %>
+                        <li class="movie">
+                            <a href="/movie/<%= id %>" class="movie__link"><h2 class="movie__title"><%= movieTitle %></h2></a>
+                            
+                            <div class="movie__content">
+                                <div class="movie__poster">
+                                    <img src="../<%= poster_url %>" alt="<%= movieTitle %> poster">
+                                </div>
+    
+                                <div class="movie__info">
+                                    <div class="movie__desc">
+                                        <h3>Сюжет</h3>
+                                        <p><%= storyline %></p>
+                                    </div>
+                                    <ul class="movie__genres">
+                                        <% genres.forEach(value => { %>
+                                            <li class="movie__genres-item">
+                                                <a href="/movies/<%= value %>" class="movie__genres-link"><%= value %></a>
+                                            </li>
+                                        <% }) %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </section>
+        </main>
+
+        <%- include('./partials/footer.ejs') %>
+
+    </div>
+
+    <script src="../src/searchFunction.js"></script>
+    <script>
+        searchFunction('../')
+    </script>
+
+</body>
+</html>

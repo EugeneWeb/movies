@@ -1,0 +1,49 @@
+<header class="header" id="header">
+    <div class="logo">
+        <a class="logo__link" href="/">
+            <img class="logo__img" src="<%= correctPath %>/img/icons/logo.svg" alt="Company logo">
+        </a>
+    </div>
+    
+    
+
+    <div class="header__right">
+        <div class="header__search">
+            <label for="header__search" class="header__search-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 10a8 8 0 1 0-3.1 6.31l6.4 6.4 1.41-1.41-6.4-6.4A8 8 0 0 0 18 10Zm-8 6a6 6 0 1 1 6-6 6 6 0 0 1-6 6Z" data-name="Layer 2" fill="#242936" class="fill-000000"></path></svg></label>
+            <input type="search" id="search">
+
+            <div class="search__field hidden">
+                <p class="no-results">Нет подходящих результатов</p>
+            </div>
+            
+        </div>
+
+        <label class="header__dropdown" for="header-dropdown">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 1H3a3 3 0 0 0 0 6h18a3 3 0 0 0 0-6Zm0 4H3a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2ZM21 17H3a3 3 0 0 0 0 6h18a3 3 0 0 0 0-6Zm0 4H3a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2ZM21 9H3a3 3 0 0 0 0 6h18a3 3 0 0 0 0-6Zm0 4H3a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2Z" fill="#ffffff" class="fill-232323"></path></svg>
+        </label>
+        <input class="header__dropdown-check" type="checkbox" id="header-dropdown">
+
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list-item">
+                    <a  class="menu__link menu__link--active" href="/">Главная</a>
+                </li>
+                <li class="menu__list-item menu__genres-wrap">
+                    <a  class="menu__genres" href="/">Жанры</a>
+
+                    <ul class="menu__genres-list">
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Драма" class="menu__genre-link">Драма</a></li>
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Боевик" class="menu__genre-link">Боевик</a></li>
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Приключения" class="menu__genre-link">Приключения</a></li>
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Криминал" class="menu__genre-link">Криминал</a></li>
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Романс" class="menu__genre-link">Романс</a></li>
+                        <li class="menu__genre"><a href="<%= correctPath %>/movies/Научная фантастика" class="menu__genre-link">Научная фантастика</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+
