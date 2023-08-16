@@ -1,6 +1,6 @@
-const createPath = require('./helpers/createPath')
-const handleError = require('./helpers/handleError')
-const Movie = require('./models/movie')
+const createPath = require('../helpers/createPath')
+const handleError = require('../helpers/handleError')
+const Movie = require('../models/Movie')
 
 
 const getIndex = (req, res) => {
