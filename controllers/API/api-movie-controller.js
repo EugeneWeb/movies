@@ -1,4 +1,4 @@
-const Movie = require('../../models/movie')
+const Movie = require('../../models/Movie')
 const handleError = require('../../helpers/handleError')
 
 const getMovies = (req, res) => {
