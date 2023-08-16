@@ -1,6 +1,6 @@
 const createPath = require('../helpers/createPath')
 const handleError = require('../helpers/handleError')
-const Movie = require('../models/movie')
+const Movie = require('../models/Movie')
 
 
 const getGenre = (req, res) => {
