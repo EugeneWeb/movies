@@ -1,13 +1,13 @@
-function searchFunction(url) {
+function handleGenreDisplayAndSearch(url) {
     const searchField = document.querySelector('.search__field')
         
 
-    const search = document.querySelector('#search')
-    search.addEventListener('keydown', function(e) {
-        if(e.key == 'Enter') {
+    // const search = document.querySelector('#search')
+    // search.addEventListener('keydown', function(e) {
+    //     if(e.key == 'Enter') {
             
-        }
-    })
+    //     }
+    // })
     search.addEventListener('input', function() {
         if(!this.value)  return
         while (searchField.firstChild) {
@@ -91,10 +91,30 @@ function searchFunction(url) {
         }, 200);
       });
 
-    document.querySelector('.menu__genres-wrap').addEventListener('mouseleave', function() {
-        document.querySelector('.menu__genres-list').style.display = 'none'
-    })
-    document.querySelector('.menu__genres-wrap').addEventListener('mouseenter', function() {
-        document.querySelector('.menu__genres-list').style.display = 'block'
-    })
+    const menuGenresWrap = document.querySelector('.menu__genres-wrap')
+    const menuGenresList = menuGenresWrap.querySelector('.menu__genres-list')
+    const menuGenres = menuGenresWrap.querySelector('.menu__genres')
+    menuGenres.addEventListener('click', e => e.preventDefault())
+
+    if(window.innerWidth > 700) {
+        menuGenresWrap.addEventListener('mouseleave', function() {
+            menuGenresList.classList.add('hidden')
+        })
+        menuGenresWrap.addEventListener('mouseenter', function() {
+            menuGenresList.classList.remove('hidden')
+        })
+    } 
+    else {
+        let isMenuGenresClicked = false
+        menuGenres.addEventListener('click', function() {
+            if(isMenuGenresClicked)
+            {
+                isMenuGenresClicked = false
+                menuGenresList.classList.add('hidden')
+                return
+            } 
+            menuGenresList.classList.remove('hidden')
+            isMenuGenresClicked = true
+        })
+    }
 }
