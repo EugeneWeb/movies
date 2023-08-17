@@ -5,17 +5,20 @@ require('dotenv').config()
 
 app.listen(process.env.PORT, err => console.log(err))
 
-const mongoose = require('mongoose')
+const ch = require('chalk')
+const errorMsg = ch.bgKeyword('white').rgb(256, 0, 0)
+const successMsg = ch.bgKeyword('green').white
 
 const dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.PASSWORD}@cluster0.a1alf18.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
 
+const mongoose = require('mongoose')
 mongoose
         .connect(dbUrl, {
             useNewUrlParser: true,
             useUnifiedTopology: true
           })
-        .then(() => console.log(`Connected to ${process.env.DB_NAME}`))
-        .catch(err => console.log(err))
+        .then(() => console.log(successMsg(`Connected to ${process.env.DB_NAME}`)))
+        .catch(err => console.log(errorMsg(err)))
 
 app.use(express.static('public'))
 
