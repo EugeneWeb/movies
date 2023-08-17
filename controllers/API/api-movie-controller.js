@@ -1,5 +1,5 @@
 const Movie = require('../../models/Movie')
-const handleError = require('../../helpers/handleError')
+
 
 const getMovies = (req, res) => {
 
@@ -13,7 +13,14 @@ const getMovies = (req, res) => {
                 .status(200)
                 .json(movies)
         })
-         .catch(handleError)
+         .catch((err) => {
+            console.log(err)
+        
+            const title = 'Страница не найдена'
+            const correctPath = '..'
+        
+            res.render(createPath('error'), { title, correctPath })
+        })
     }
 }
 

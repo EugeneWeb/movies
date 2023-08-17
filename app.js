@@ -30,3 +30,13 @@ app.use(indexRoutes)
 app.use(movieRoutes)
 app.use(genreRoutes)
 app.use(apiMovieRoutes)
+
+const createPath = require('./helpers/createPath')
+app.use((req, res) => {
+  const title = 'Страница не найдена'
+  const correctPath = '.'
+
+  res
+     .status(404)
+     .render(createPath('error'), { title, correctPath })
+})
