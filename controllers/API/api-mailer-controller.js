@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer')
 const Movie = require('../../models/Movie')
 
+require('dotenv').config()
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

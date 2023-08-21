@@ -139,7 +139,7 @@
     }
 
     #form-gmail {
-        width: 250px;
+        width: 270px;
         padding: 10px;
         margin: 0 auto 10px auto;
         border-radius: 15px;
@@ -158,9 +158,9 @@
         text-align: center;
     }
     #inputGmail {
-        padding: 4px 6px;
+        padding: 2px 3px;
         border: none;
-        border-radius: 10px;
+        border-radius: 6px;
 
         font-size: 12px;
     }
@@ -168,8 +168,8 @@
         outline: 2px solid #51596A;
     }
     #sendGmail {
-        padding: 4px 6px;
-        border-radius: 10px;
+        padding: 2px 3px;
+        border-radius: 6px;
     
         font-size: 12px;
         color: rgba(255, 255, 255, .6);
