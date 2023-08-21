@@ -6,6 +6,50 @@
     font-family: sans-serif;
 }
 
+
+
+#form-gmail {
+    width: 350px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+
+    background-color: #242936;
+}
+.movies__form-text {
+    margin-bottom: 10px;
+
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #fff;
+}
+.movies__form-field {
+    text-align: center;
+}
+#inputGmail {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+}
+#inputGmail:focus {
+    outline: 2px solid #51596A;
+}
+#sendGmail {
+    padding: 10px 15px;
+    border-radius: 10px;
+
+    color: rgba(255, 255, 255, .6);
+
+    background-color: #51596A;
+}
+#sendGmail:hover {
+    background-color: #484f5e;
+}
+#sendGmail:active {
+    background-color: #373c47;
+}
+
+
 .movie {
     padding: 30px;
     margin-bottom: 30px;
@@ -15,7 +59,7 @@
     color: #fff;
     font-family: sans-serif;
 
-    background-color: #3d465c;    ;
+    background-color: #3d465c;
 }
 .movie__content {
     display: flex;
@@ -39,15 +83,7 @@
     height: 100%;
     object-fit: cover;
 }
-/* .movie__poster {
-    width: 300px;
 
-
-}   
-.movie__poster img {
-
-    object-fit: cover;
-} */
 .movie__title {
     margin-bottom: 20px;
     text-indent: 30px;
@@ -99,7 +135,52 @@
         font-size: 40px;
         text-indent: 15px;
 
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+    }
+
+    #form-gmail {
+        width: 250px;
+        padding: 10px;
+        margin: 0 auto 10px auto;
+        border-radius: 15px;
+    
+        background-color: #242936;
+    }
+    .movies__form-text {
+        margin-bottom: 10px;
+    
+        font-size: 12px;
+        font-family: sans-serif;
+        text-align: center;
+        color: #fff;
+    }
+    .movies__form-field {
+        text-align: center;
+    }
+    #inputGmail {
+        padding: 4px 6px;
+        border: none;
+        border-radius: 10px;
+
+        font-size: 12px;
+    }
+    #inputGmail:focus {
+        outline: 2px solid #51596A;
+    }
+    #sendGmail {
+        padding: 4px 6px;
+        border-radius: 10px;
+    
+        font-size: 12px;
+        color: rgba(255, 255, 255, .6);
+    
+        background-color: #51596A;
+    }
+    #sendGmail:hover {
+        background-color: #484f5e;
+    }
+    #sendGmail:active {
+        background-color: #373c47;
     }
 
     .movie {

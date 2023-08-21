@@ -3,6 +3,13 @@ const app = express()
 
 require('dotenv').config()
 
+app.use(express.static('public'))
+app.use(express.json())
+app.set('view engine', 'ejs')
+
+const morgan = require('morgan')
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+
 app.listen(process.env.PORT, err => console.log(err))
 
 const ch = require('chalk')
@@ -20,19 +27,17 @@ mongoose
         .then(() => console.log(successMsg(`Connected to ${process.env.DB_NAME}`)))
         .catch(err => console.log(errorMsg(err)))
 
-app.use(express.static('public'))
-
-app.set('view engine', 'ejs')
-
 const indexRoutes = require('./routes/index-routes')
 const movieRoutes = require('./routes/movie-routes')
 const genreRoutes = require('./routes/genre-routes')
 const apiMovieRoutes = require('./routes/API/api-movie-routes')
+const apiMailerRoutes = require('./routes/API/api-mailer-routes')
 
 app.use(indexRoutes)
 app.use(movieRoutes)
 app.use(genreRoutes)
 app.use(apiMovieRoutes)
+app.use(apiMailerRoutes)
 
 const createPath = require('./helpers/createPath')
 app.use((req, res) => {

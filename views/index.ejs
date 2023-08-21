@@ -16,6 +16,14 @@
         <main class="main">
             <section class="movies">
                 <h1 class="movies__title title"><%= title %></h1>
+
+                <form id="form-gmail">
+                    <p class="movies__form-text">Получить список всех фильмов на почту</p>
+                    <div class="movies__form-field">
+                        <input type="email" id="inputGmail" placeholder="Ваша почта">
+                        <button type="submit" id="sendGmail">Отправить</button>
+                    </div>
+                </form>
                 
                 <ul class="movies__list">
                     <% movies.forEach(({_id: id, title: movieTitle, poster_url, storyline, genres }) => { %>
@@ -51,6 +59,7 @@
     </div>
 
     <script src="./src/handleGenreDisplayAndSearch.js"></script>
+    <script src="./src/handleSendGmail.js"></script>
     <script>
         handleGenreDisplayAndSearch('')
     </script>
