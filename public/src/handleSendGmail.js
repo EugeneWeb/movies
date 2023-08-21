@@ -2,7 +2,9 @@ document.querySelector('#form-gmail').addEventListener('submit', async function(
     try {
         e.preventDefault()
 
-        const gmail = this.querySelector('#inputGmail').value
+        const inputGmail = this.querySelector('#inputGmail')
+        const gmail = inputGmail.value
+        inputGmail.value = ''
         const raw = JSON.stringify({ gmail })
 
         const reqHeaders = new Headers()
