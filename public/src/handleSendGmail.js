@@ -19,7 +19,6 @@ document.querySelector('#form-gmail').addEventListener('submit', async function(
         if(!resp.ok) {
             throw new Error(`Form error status: ${resp.status}`)
         }
-        console.log('Отправлено')
     } catch (error) {
         console.log(error)
     }

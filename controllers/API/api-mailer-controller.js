@@ -29,8 +29,6 @@ const sendMovies = (req, res) => {
     }
     let html = ''
 
-    console.log(req.get('host'))
-
     Movie
          .find()
          .then(movies => {
