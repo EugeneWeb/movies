@@ -1,8 +1,6 @@
 const nodemailer = require('nodemailer')
 const Movie = require('../../models/Movie')
 
-require('dotenv').config()
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -41,11 +39,6 @@ const sendMovies = (req, res) => {
 
             mailOptions.to = gmail
             mailOptions.html += html
-
-            console.log(process.env.GMAIL, process.env.GMAIL_PASSWORD)
-            console.log(gmail)
-            console.log(mailOptions)
-            console.log(transporter)
 
             transporter.sendMail(mailOptions, err => console.log(err))
             res
