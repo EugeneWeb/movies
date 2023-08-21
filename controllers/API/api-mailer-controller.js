@@ -13,7 +13,7 @@ const mailOptions = {
     from: process.env.GMAIL,
     to: '',
     subject: 'All movies',
-    html:'<head><style> body { color: black;} a { color: black; text-decoration: underline; } p { color: #242936; }</style></head><body><h2>Здравствуйте, ваш список фильмов:</h2>'
+    html:'<head><style> body, h2 { color: black;} a { color: black; text-decoration: underline; } p { color: #242936; }</style></head><body><h2>Здравствуйте, ваш список фильмов:</h2>'
 }
 
 
@@ -28,6 +28,8 @@ const sendMovies = (req, res) => {
         return
     }
     let html = ''
+
+    console.log(req.get('host'))
 
     Movie
          .find()
