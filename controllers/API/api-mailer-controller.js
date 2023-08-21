@@ -33,7 +33,7 @@ const sendMovies = (req, res) => {
          .find()
          .then(movies => {
             movies.forEach(movie => {
-                html += `<h3><a href="${req.path}movie/${movie.id}">${movie.title}</a></h3><p>Автор: ${movie.author}</p><p>Рейтинг: ${movie.rating}</p>`
+                html += `<h3><a href="${req.protocol}://${req.get('host')}/movie/${movie.id}">${movie.title}</a></h3><p>Автор: ${movie.author}</p><p>Рейтинг: ${movie.rating}</p>`
             })
             html += `</body>`
 
