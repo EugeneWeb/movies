@@ -23,6 +23,7 @@ const mailOptions = {
 
 const sendMovies = (req, res) => {
     const { gmail } = req.body
+
     if(gmail == undefined || gmail.length === 0) {
         console.log('Request body doesn\'t have a gmail')
         res.status(404)
@@ -40,6 +41,11 @@ const sendMovies = (req, res) => {
 
             mailOptions.to = gmail
             mailOptions.html += html
+
+            console.log(process.env.GMAIL, process.env.GMAIL_PASSWORD)
+            console.log(gmail)
+            console.log(mailOptions)
+            console.log(transporter)
 
             transporter.sendMail(mailOptions, err => console.log(err))
             res
