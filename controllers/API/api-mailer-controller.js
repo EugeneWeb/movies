@@ -13,12 +13,60 @@ const mailOptions = {
     from: process.env.GMAIL,
     to: '',
     subject: 'All movies',
-    html:'<head><style> body, h2 { color: black;} a { color: black; text-decoration: underline; } p { color: #242936; }</style></head><body><h2>Здравствуйте, ваш список фильмов:</h2>'
+    html:`
+        <head>
+            <style> 
+                ul {
+                    margin: 0;
+                    padding: 0;
+
+                    list-style-type: none;
+                }
+
+                .main-title {
+                    color: black;
+                    font-family: sans-serif;
+                }
+                .movie-link { 
+                    color: black; 
+                    font-family: sans-serif;
+                    text-decoration: underline; 
+                } 
+                .movie-text { 
+                    color: #242936; 
+                }
+                
+                .movie-content {
+                    display: flex;
+                }
+
+                .img-wrap {
+                    width: 200px;
+                    height: 300px;
+                }
+                
+                .img-wrap img {
+                    display: block;
+                    width: 100%;
+                    max-width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                
+                .movie-info {
+                    margin-left: 20px;
+                }
+
+            </style>
+        </head>
+        <body>
+        <h2 class="main-title">Здравствуйте, ваш список фильмов:</h2>
+        <ul class="movies">`
 }
 
 
 
-
+const path = require('path')
 const sendMovies = (req, res) => {
     const { gmail } = req.body
 
@@ -32,15 +80,38 @@ const sendMovies = (req, res) => {
     Movie
          .find()
          .then(movies => {
-            movies.forEach(movie => {
-                html += `<h3><a href="${req.protocol}://${req.get('host')}/movie/${movie.id}">${movie.title}</a></h3><p>Автор: ${movie.author}</p><p>Рейтинг: ${movie.rating}</p>`
+            mailOptions.attachments = []
+            movies.forEach((movie, index) => {
+                html += `
+                    <li class="movie">
+                        <h3 class="movie-title">
+                            <a class="movie-link" href="${req.protocol}://${req.get('host')}/movie/${movie.id}">${movie.title}</a>
+                        </h3>
+                        <div class="movie-content">
+                            <div class="img-wrap">
+                                <a class="movie-link" href="${req.protocol}://${req.get('host')}/movie/${movie.id}"><img src="cid:image${index}" alt="Картинка ${movie.title}"/></a>
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="movie-text">Автор: ${movie.author}</p>
+                                <p class="movie-text">Рейтинг: ${movie.rating}</p>
+                            </div>
+                        </div>
+                    </li>
+                    `
+                    mailOptions.attachments.push({
+                        filename: `${movie.title}.webp`,
+                        path: path.resolve(__dirname, '../../public',movie.poster_url),
+                        cid: `image${index}`
+                    })
             })
-            html += `</body>`
+            html += `</ul></body>`
 
             mailOptions.to = gmail
             mailOptions.html += html
+            
 
-            transporter.sendMail(mailOptions, err => console.log(err))
+            transporter.sendMail(mailOptions, err => err ? console.log(err): null)
             res
                 .status(200)
                 .json(mailOptions)

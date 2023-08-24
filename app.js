@@ -10,7 +10,7 @@ app.set('view engine', 'ejs')
 const morgan = require('morgan')
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
-app.listen(process.env.PORT, err => console.log(err))
+app.listen(process.env.PORT, err => err ? console.log(err) : null)
 
 const ch = require('chalk')
 const errorMsg = ch.bgKeyword('white').rgb(256, 0, 0)

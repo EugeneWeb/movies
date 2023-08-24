@@ -152,7 +152,7 @@
 
     .movie__content {
         flex: 200px;
-        gap: 10px
+        gap: 10px;
     }
 
     .movie__desc {
